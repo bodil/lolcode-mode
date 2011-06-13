@@ -40,7 +40,7 @@ Installation
 Put this file somewhere in your load-path, and put the following in
 your .emacs:
 
-  (require 'lolcode-mode)
+    (require 'lolcode-mode)
 
 You may want to install a LOLCODE interpreter. This package comes
 preconfigured for lci, which you can get from <http://icanhaslolcode.org/>.
