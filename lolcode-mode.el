@@ -72,51 +72,51 @@
 
 
 
-(defvar lolcode-keyword-regexp
-  (regexp-opt
-   '("HAI" "KTHXBYE"
-     "I HAS A" "IS NOW A" "ITZ" "R" "MAEK" "A"
-     "YA RLY" "NO WAI" "MEBBE" "OIC"
-     "OMG" "OMGWTF" "GTFO"
-     "IM IN" "YR" "TIL" "WILE" "IM OUTTA YR"
-     "HOW DUZ I" "IF U SAY SO" "FOUND YR"
-     )
-   'words))
+(defvar lolcode-lang-keywords
+  '("HAI" "KTHXBYE"
+    "I HAS A" "IS NOW A" "ITZ" "R" "MAEK" "A"
+    "O RLY?" "YA RLY" "NO WAI" "MEBBE" "OIC"
+    "WTF?" "OMG" "OMGWTF" "GTFO"
+    "IM IN" "YR" "TIL" "WILE" "IM OUTTA YR"
+    "HOW DUZ I" "IF U SAY SO" "FOUND YR"
+    ))
 
-(defvar lolcode-type-regexp
-  (regexp-opt
-   '("NOOB" "TROOF" "NUMBR" "NUMBAR" "YARN" "BUKKIT")
-   'words))
+(defvar lolcode-lang-types
+  '("NOOB" "TROOF" "NUMBR" "NUMBAR" "YARN" "BUKKIT"))
 
-(defvar lolcode-operator-regexp
-  (regexp-opt
-   '("SUM OF" "DIFF OF" "PRODUKT OF" "QUOSHUNT OF" "MOD OF" "BIGGR OF" "SMALLR OF"
-     "BOTH OF" "EITHER OF" "WON OF" "NOT" "ALL OF" "ANY OF"
-     "BOTH SAEM" "DIFFRINT"
-     "SMOOSH" "MKAY" "AN")
-   'words))
+(defvar lolcode-lang-operators
+  '("SUM OF" "DIFF OF" "PRODUKT OF" "QUOSHUNT OF" "MOD OF" "BIGGR OF" "SMALLR OF"
+    "BOTH OF" "EITHER OF" "WON OF" "NOT" "ALL OF" "ANY OF"
+    "BOTH SAEM" "DIFFRINT"
+    "SMOOSH" "MKAY" "AN"))
 
-(defvar lolcode-constant-regexp
-  (regexp-opt
-   '("WIN" "FAIL")
-   'words))
+(defvar lolcode-lang-constants
+  '("WIN" "FAIL"))
 
-(defvar lolcode-builtin-regexp
-  (regexp-opt
-   '("VISIBLE" "GIMMEH"
-     "UPPIN" "NERFIN")
-   'words))
+(defvar lolcode-lang-builtins
+  '("VISIBLE" "GIMMEH"
+    "UPPIN" "NERFIN"))
 
-(defvar lolcode-variable-regexp
-  (regexp-opt
-   '("IT")
-   'words))
+(defvar lolcode-lang-variables
+  '("IT"))
 
-(defvar lolcode-comment-keyword-regexp
-  (regexp-opt
-   '("OBTW" "TLDR")
-   'words))
+(defvar lolcode-lang-comment-keywords
+  '("OBTW" "TLDR"))
 
+(defvar lolcode-lang-all
+  (append lolcode-lang-keywords lolcode-lang-types lolcode-lang-operators lolcode-lang-constants
+          lolcode-lang-builtins lolcode-lang-variables lolcode-lang-comment-keywords))
+
+(defvar lolcode-keyword-regexp (regexp-opt lolcode-lang-keywords 'words))
+(defvar lolcode-type-regexp (regexp-opt lolcode-lang-types 'words))
+(defvar lolcode-operator-regexp (regexp-opt lolcode-lang-operators 'words))
+(defvar lolcode-constant-regexp (regexp-opt lolcode-lang-constants 'words))
+(defvar lolcode-builtin-regexp (regexp-opt lolcode-lang-builtins 'words))
+(defvar lolcode-variable-regexp (regexp-opt lolcode-lang-variables 'words))
+(defvar lolcode-comment-keyword-regexp (regexp-opt lolcode-lang-comment-keywords 'words))
+
+;; regexp-opt doesn't do words with question marks in them well, so
+;; handle these with a custom regexp.
 (defvar lolcode-difficult-keyword-regexp "\\<\\(?:WTF\\|O RLY\\)[?]*\\>")
 
 (defconst lolcode-font-lock-keywords
