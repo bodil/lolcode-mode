@@ -32,7 +32,7 @@ features:
 
 * Syntax highlighting.
 * Smart indentation.
-* Execution of LOLCODE buffers (press `C-c C-C`).
+* Execution of LOLCODE buffers (press `C-c C-c`).
 
 Installation
 ------------
