@@ -179,9 +179,12 @@
                        (setq not-indented nil))
                    (if (bobp)
                        (setq not-indented nil))))))))
-      (if cur-indent
-          (indent-line-to cur-indent)
-        (indent-line-to 0)))))
+      (save-excursion
+        (if cur-indent
+            (indent-line-to cur-indent)
+          (indent-line-to 0)))
+      (when (<= (current-column) (current-indentation))
+          (backward-to-indentation 0)))))
 
 
 ;; Execute the current buffer using lci
