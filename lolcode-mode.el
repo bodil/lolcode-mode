@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2011 Bodil Stokke
 
-;; Version 0.1
+;; Version: 0.1
 ;; Keywords: LOLCODE major mode
 ;; Author: Bodil Stokke <lolcode@bodil.tv>
 ;; URL: http://github.com/bodil/lolcode-mode
@@ -23,7 +23,7 @@
 ;; along with this program; if not, write to the Free Software
 ;; Foundation, Inc., 51 Franklin Street, Suite 500, Boston, MA 02110.
 
-;;; Commentary
+;;; Commentary:
 
 ;; This is a major mode for editing LOLCODE, with the following
 ;; features:
@@ -32,7 +32,7 @@
 ;; * Smart indentation.
 ;; * Execution of LOLCODE buffers (press C-c C-c).
 
-;;; Installation
+;;; Installation:
 
 ;; Put this file somewhere in your load-path, and put the following in
 ;; your .emacs:
@@ -44,7 +44,7 @@
 
 ;;   http://icanhaslolcode.org/
 
-;;; Configuration
+;;; Configuration:
 
 ;; This is an example setup which integrates lolcode-mode with
 ;; auto-complete-mode and yasnippet. It also sets default indentation
@@ -249,3 +249,4 @@
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.lol$" . lolcode-mode))
 
+;;; lolcode-mode.el ends here
