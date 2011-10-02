@@ -232,6 +232,25 @@
       (lolcode-execute-region (mark) (point))
     (lolcode-execute-buffer)))
 
+;; Flymake
+(defun flymake-lolcode-init ()
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy 'flymake-create-temp-inplace))
+         (local-file (file-relative-name temp-file (file-name-directory buffer-file-name))))
+    (list lolcode-interpreter-command (list local-file))))
+(defvar flymake-lolcode-allowed-file-name-masks
+  '(("\\.lol\\'" flymake-lolcode-init)))
+(defvar flymake-lolcode-err-line-patterns
+  '(("\\([^:]+\\):\\([0-9]+\\): *\\(.*\\)" 1 2 nil 3)))
+(defun flymake-lolcode-load ()
+  (interactive)
+  (when (and (not (null buffer-file-name)) (file-writable-p buffer-file-name))
+    (set (make-local-variable 'flymake-allowed-file-name-masks) flymake-lolcode-allowed-file-name-masks)
+    (set (make-local-variable 'flymake-err-line-patterns) flymake-lolcode-err-line-patterns)
+    (flymake-mode t)))
+(eval-after-load 'flymake
+  (add-hook 'lolcode-mode-hook 'flymake-lolcode-load))
+
+;;;###autoload
 (define-derived-mode lolcode-mode fundamental-mode
   "LOLCODE"
   "I CAN HAS MAJOR MODE 4 LOLCODE?"
