@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2011 Bodil Stokke
 
-;; Version: 0.1
+;; Version: 0.2
 ;; Keywords: LOLCODE major mode
 ;; Author: Bodil Stokke <lolcode@bodil.tv>
 ;; URL: http://github.com/bodil/lolcode-mode
@@ -31,6 +31,7 @@
 ;; * Syntax highlighting.
 ;; * Smart indentation.
 ;; * Execution of LOLCODE buffers (press C-c C-c).
+;; * Automatic Flymake integration.
 
 ;;; Installation:
 
