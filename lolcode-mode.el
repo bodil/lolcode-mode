@@ -241,7 +241,7 @@
 (defvar flymake-lolcode-allowed-file-name-masks
   '(("\\.lol\\'" flymake-lolcode-init)))
 (defvar flymake-lolcode-err-line-patterns
-  '(("\\([^:]+\\):\\([0-9]+\\): *\\(.*\\)" 1 2 nil 3)))
+  '(("\\([^:]+\\):\\([[:digit:]]+\\): *\\(.*\\)" 1 2 nil 3)))
 (defun flymake-lolcode-load ()
   (interactive)
   (when (and (not (null buffer-file-name)) (file-writable-p buffer-file-name))
