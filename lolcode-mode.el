@@ -166,42 +166,42 @@
       (save-excursion
         (beginning-of-line)
         (cond
-            ((lolcode-line-at-point-matches block-end)
-             (save-excursion
-               (forward-line -1)
-               (setq cur-indent (- (current-indentation) default-tab-width)))
-             (if (< cur-indent 0)
-                 (setq cur-indent 0)))
-            ((lolcode-line-at-point-matches case-label)
-             (save-excursion
-               (forward-line -1)
-               (if (lolcode-line-at-point-matches block-start)
-                   ;; A case label just after a block start should be
-                   ;; aligned with it,
-                   (setq cur-indent (current-indentation))
-                 ;; But if it's after any old line, it de-indents.
-                 (setq cur-indent (- (current-indentation) default-tab-width))))
-             (if (< cur-indent 0)
-                 (setq cur-indent 0)))
-            (t
-             (while not-indented
-               (forward-line -1)
-               (if (lolcode-line-at-point-matches block-end)
-                   (progn
-                     (setq cur-indent (current-indentation))
-                     (setq not-indented nil))
-                 (if (lolcode-line-at-point-matches block-start)
-                     (progn
-                       (setq cur-indent (+ (current-indentation) default-tab-width))
-                       (setq not-indented nil))
-                   (if (bobp)
-                       (setq not-indented nil))))))))
+         ((lolcode-line-at-point-matches block-end)
+          (save-excursion
+            (forward-line -1)
+            (setq cur-indent (- (current-indentation) default-tab-width)))
+          (if (< cur-indent 0)
+              (setq cur-indent 0)))
+         ((lolcode-line-at-point-matches case-label)
+          (save-excursion
+            (forward-line -1)
+            (if (lolcode-line-at-point-matches block-start)
+                ;; A case label just after a block start should be
+                ;; aligned with it,
+                (setq cur-indent (current-indentation))
+              ;; But if it's after any old line, it de-indents.
+              (setq cur-indent (- (current-indentation) default-tab-width))))
+          (if (< cur-indent 0)
+              (setq cur-indent 0)))
+         (t
+          (while not-indented
+            (forward-line -1)
+            (if (lolcode-line-at-point-matches block-end)
+                (progn
+                  (setq cur-indent (current-indentation))
+                  (setq not-indented nil))
+              (if (lolcode-line-at-point-matches block-start)
+                  (progn
+                    (setq cur-indent (+ (current-indentation) default-tab-width))
+                    (setq not-indented nil))
+                (if (bobp)
+                    (setq not-indented nil))))))))
       (save-excursion
         (if cur-indent
             (indent-line-to cur-indent)
           (indent-line-to 0)))
       (when (<= (current-column) (current-indentation))
-          (backward-to-indentation 0)))))
+        (backward-to-indentation 0)))))
 
 
 ;; Execute the current buffer using lci
