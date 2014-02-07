@@ -43,7 +43,7 @@ your .emacs:
     (require 'lolcode-mode)
 
 You may want to install a LOLCODE interpreter. This package comes
-preconfigured for lci, which you can get from <http://icanhaslolcode.org/>.
+preconfigured for lci, which you can get from <http://lolcode.org/>.
   
 Configuration
 -------------
